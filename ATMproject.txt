@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class ATMproject {
+    public static void main(String[]args){
+        int pin=1234;
+        int balance=10000;
+        int AddAmount=0;
+        int TakeAmount=0;
+        String name;
+        Scanner obj=new Scanner(System.in);
+        System.out.println("Enter Your Pin Number");
+        int password = obj.nextInt();
+        if(password==pin){
+            System.out.println("Enter Your Name:");
+            name=obj.next();
+            System.out.println("Welcome " +name);
+            while (true){
+                System.out.println("press 1 to check your balance");
+                System.out.println("press 2 to AddAmount");
+                System.out.println("press 3 to TakeAmount");
+                System.out.println("press 4 to Take Recipt");
+                System.out.println("press 5 to EXIT");
+                int opt=obj.nextInt();
+                switch (opt){
+                    case 1:
+                        System.out.println("Your current balance is "+balance);
+                        break;
+                        case 2:
+                            System.out.println("How much amount did you want to ADD to your account");
+                            AddAmount= obj.nextInt();
+                            System.out.println("Succesfully credicted");
+                            balance=AddAmount+balance;
+                            break;
+                    case 3:
+                        System.out.println("How much amount did you want to take");
+                        TakeAmount=obj.nextInt();
+                        if(TakeAmount>balance){
+                            System.out.println("Your balance is insufficient");
+                            System.out.println("Try less than Your Available balance");
+                        }
+                        else{
+                            System.out.println("Successfully Taken");
+
+                            balance=balance-TakeAmount;
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Welcome to All in one mini ATM");
+                        System.out.println("\nAvailable balance is "+balance);
+                        System.out.println("\nAmount deposited     "+AddAmount);
+                        System.out.println("\nAmount Taken         "+TakeAmount);
+                        System.out.println("\n*** Thanks for coming ***");
+                        break;
+                }
+                if(opt==5){
+                    System.out.println("** Thank You for using **");
+                    break;
+                }
+            }
+        }
+        else{
+            System.out.println("Sorry Wrong pin Number");
+            System.out.println("\n Try again with right pin number");
+        }
+    }
+}
